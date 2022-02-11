@@ -4,7 +4,7 @@
     <BRow>
       <template v-if="isExist">
         <BCol cols="3" v-for="(movie, key) in movieList" :key="key">
-          <MovieItem :movie="movie" />
+          <MovieItem :movie="movie" @mouseover.native="onMouseOver(movie.Poster)" />
         </BCol>
       </template>
       <template v-else> Loader </template>
@@ -33,6 +33,11 @@ export default {
       return Object.keys(this.movieList).length > 0;
     },
   },
+  methods: {
+    onMouseOver(poster) {
+      this.$emit("changePoster", poster);
+    },
+  },
 };
 </script>
 
@@ -40,5 +45,6 @@ export default {
 .list-title {
   font-size: 50px;
   margin-bottom: 30px;
+  color: #fff;
 }
 </style>

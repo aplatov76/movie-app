@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <PosterBg />
-    <MoviesList />
+    <PosterBg :poster="poster" />
+    <MoviesList @changePoster="onChangePoster" />
   </div>
 </template>
 
@@ -16,8 +16,16 @@ export default {
     MoviesList,
     PosterBg,
   },
+  data() {
+    return {
+      poster: "",
+    };
+  },
   methods: {
     ...mapActions("movies", ["fetchMovies"]),
+    onChangePoster(poster) {
+      this.poster = poster;
+    },
   },
   mounted() {
     //this.fetchMovies();
@@ -32,7 +40,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   position: relative;
 }
 </style>
