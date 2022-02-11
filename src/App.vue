@@ -1,24 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <PosterBg />
+    <MoviesList />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import MoviesList from "@/components/MoviesList";
+import PosterBg from "@/components/PosterBg";
 import { mapActions } from "vuex";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    MoviesList,
+    PosterBg,
   },
   methods: {
     ...mapActions("movies", ["fetchMovies"]),
   },
   mounted() {
-    this.fetchMovies();
+    //this.fetchMovies();
   },
 };
 </script>
@@ -31,5 +33,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  position: relative;
 }
 </style>
